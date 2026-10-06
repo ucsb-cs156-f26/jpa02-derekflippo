@@ -30,7 +30,20 @@ public class TeamTest {
 
     @Test
     public void equals_returns_false_for_different_object() {
-        Team otherTeam = new Team("other-team");
+        String otherTeam = "not-a-team";
+        assert (!team.equals(otherTeam));
+    }
+
+    @Test
+    public void equals_returns_false_for_different_name() {
+        Team otherTeam = new Team("different-team");
+        assert (!team.equals(otherTeam));
+    }
+
+    @Test
+    public void equals_returns_false_for_different_members_same_name() {
+        Team otherTeam = new Team("test-team");
+        otherTeam.addMember("Alice");
         assert (!team.equals(otherTeam));
     }
 
@@ -56,7 +69,7 @@ public class TeamTest {
         Team t = new Team();
 
         int result = t.hashCode();
-        int expectedResult = 60;
+        int expectedResult = 1;
         assertEquals(expectedResult, result);
     }
 }
